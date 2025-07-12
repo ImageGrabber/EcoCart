@@ -217,12 +217,18 @@ function Recommendations() {
       <h2 className="text-2xl font-bold mb-8">Recommendations</h2>
       <div className="flex flex-col md:flex-row gap-8">
         {/* Left Card */}
-        <div className="bg-[#e6f9e6] rounded-2xl flex flex-col justify-between items-start p-8 min-w-[260px] max-w-[320px] w-full mb-4 md:mb-0">
-          <div>
-            <h3 className="text-2xl font-bold mb-4 text-gray-900">Organic<br/>Vegetables<br/>Everyday</h3>
-            <button className="bg-white text-gray-900 px-5 py-2 rounded font-semibold shadow hover:bg-[#7bbf3a] hover:text-white transition-colors border border-gray-200">Shop now</button>
+        <div className="relative rounded-3xl min-w-[320px] max-w-[400px] w-full mb-4 md:mb-0 h-[600px] overflow-hidden flex flex-col justify-end">
+          {/* Background Image */}
+          <img
+            src="https://images.pexels.com/photos/952476/pexels-photo-952476.jpeg"
+            alt="Organic Vegetables"
+            className="absolute inset-0 w-full h-full object-cover z-0 select-none pointer-events-none"
+          />
+          {/* Content at bottom */}
+          <div className="relative z-10 p-8 pb-10 w-full flex flex-col items-start">
+            <h3 className="text-4xl font-bold mb-6 text-white leading-tight drop-shadow-lg">Organic<br />Vegetables<br />Everyday</h3>
+            <button className="bg-white text-black px-8 py-4 rounded-xl font-semibold shadow hover:bg-gray-100 transition-colors text-lg">Shop now</button>
           </div>
-          <img src="https://images.pexels.com/photos/5945901/pexels-photo-5945901.jpeg?auto=compress&w=400&q=80" alt="Veg Bag" className="w-full rounded-xl mt-8 object-cover" />
         </div>
         {/* Right: Tabs and Product Grid */}
         <div className="flex-1">
