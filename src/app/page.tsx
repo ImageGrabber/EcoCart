@@ -1,8 +1,12 @@
 "use client";
 
-import { FaUser, FaShoppingCart, FaHeart, FaExchangeAlt, FaBars } from "react-icons/fa";
+import { HiOutlineUser, HiOutlineShoppingCart, HiOutlineHeart, HiOutlineArrowsRightLeft, HiOutlineBars3 } from "react-icons/hi2";
 import { useState } from "react";
 import Footer from "../components/Footer";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 export default function Home() {
   const [lang, setLang] = useState("English");
@@ -47,10 +51,10 @@ export default function Home() {
           </div>
           {/* Icons */}
           <div className="flex items-center gap-6 text-gray-700 text-lg">
-            <div className="flex flex-col items-center cursor-pointer"><FaUser /><span className="text-xs">Account</span></div>
-            <div className="flex flex-col items-center cursor-pointer"><FaShoppingCart /><span className="text-xs">Cart</span></div>
-            <div className="flex flex-col items-center cursor-pointer"><FaHeart /><span className="text-xs">Wishlist</span></div>
-            <div className="flex flex-col items-center cursor-pointer"><FaExchangeAlt /><span className="text-xs">Compare</span></div>
+            <div className="flex flex-col items-center cursor-pointer"><HiOutlineUser /><span className="text-xs">Account</span></div>
+            <div className="flex flex-col items-center cursor-pointer"><HiOutlineShoppingCart /><span className="text-xs">Cart</span></div>
+            <div className="flex flex-col items-center cursor-pointer"><HiOutlineHeart /><span className="text-xs">Wishlist</span></div>
+            <div className="flex flex-col items-center cursor-pointer"><HiOutlineArrowsRightLeft /><span className="text-xs">Compare</span></div>
           </div>
         </div>
       </header>
@@ -59,7 +63,7 @@ export default function Home() {
       <nav className="w-full border-b border-gray-100 bg-white">
         <div className="max-w-[1600px] mx-auto px-4 flex items-center gap-4 py-3">
           <button className="bg-[#7bbf3a] text-white font-semibold px-6 py-3 rounded shadow hover:bg-[#6aa82e] transition-colors text-sm flex items-center gap-2">
-            <FaBars />
+            <HiOutlineBars3 />
             BROWSE CATEGORIES
           </button>
           <div className="flex gap-6 ml-4 text-sm font-medium">
@@ -90,18 +94,46 @@ export default function Home() {
           <p className="text-gray-500 mb-8 text-lg">Alway fresh organic products for you</p>
           <button className="bg-[#7bbf3a] text-white px-8 py-3 rounded font-semibold shadow hover:bg-[#6aa82e] transition-colors text-base">Shop now</button>
         </div>
-        {/* Right: Sale Card */}
-        <div className="w-full md:w-[350px] bg-[#e6f9e6] rounded-2xl flex flex-col justify-start items-start p-10 text-left min-h-[350px] relative overflow-hidden">
-          <h2 className="text-2xl font-bold mb-1">
-            <span className="text-[#7bbf3a]">30%</span> <span className="text-gray-900">SALE OFF</span>
-          </h2>
-          <p className="text-gray-800 mb-1 text-sm">Spring Fresh Fruit<br/>Special Offer.</p>
-          <img
-            src="https://www.pngarts.com/files/3/Vegetable-PNG-Picture.png"
-            alt="Oranges"
-            className="absolute right-0 bottom-0 w-[90%] h-[70%] object-contain select-none pointer-events-none"
-            style={{ zIndex: 1 }}
-          />
+        {/* Right: Sale Card Slider */}
+        <div className="w-full md:w-[350px] bg-[#e6f9e6] rounded-lg flex flex-col justify-start items-start p-0 text-left min-h-[350px] relative overflow-hidden">
+          <Swiper
+            spaceBetween={0}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{ delay: 3500, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
+            modules={[Pagination, Autoplay]}
+            className="w-full h-full"
+          >
+            <SwiperSlide>
+              <div className="p-8 h-[350px] flex flex-col justify-start items-start relative">
+                <h2 className="text-2xl font-bold mb-1">
+                  <span className="text-[#7bbf3a]">30%</span> <span className="text-gray-900">SALE OFF</span>
+                </h2>
+                <p className="text-gray-800 mb-1 text-sm">Spring Fresh Fruit<br/>Special Offer.</p>
+                <img
+                  src="https://www.pngarts.com/files/3/Vegetable-PNG-Picture.png"
+                  alt="Oranges"
+                  className="absolute right-0 bottom-0 w-[95%] h-[80%] object-contain select-none pointer-events-none"
+                  style={{ zIndex: 1 }}
+                />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="p-8 h-[350px] flex flex-col justify-start items-start relative">
+                <h2 className="text-2xl font-bold mb-1">
+                  <span className="text-[#7bbf3a]">Buy 1 Get 1</span> <span className="text-gray-900">FREE</span>
+                </h2>
+                <p className="text-gray-800 mb-1 text-sm">Fresh Red Onions<br/>Today Only.</p>
+                <img
+                  src="https://www.freepnglogos.com/uploads/vegetables-png/vegetables-about-our-philosophy-super-healthy-kids-23.png"
+                  alt="Fresh Vegetables"
+                  className="absolute right-0 bottom-0 w-[85%] h-[65%] object-contain select-none pointer-events-none"
+                  style={{ zIndex: 1 }}
+                />
+              </div>
+            </SwiperSlide>
+          </Swiper>
         </div>
       </section>
 
