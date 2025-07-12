@@ -2,6 +2,7 @@
 
 import { FaUser, FaShoppingCart, FaHeart, FaExchangeAlt, FaBars } from "react-icons/fa";
 import { useState } from "react";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const [lang, setLang] = useState("English");
@@ -109,41 +110,41 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {/* Feature 1 */}
           <div className="flex items-center gap-6">
-            <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-sm border-2 border-dotted border-gray-200">
+            <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center border-2 border-dotted border-gray-200">
               <span className="text-5xl">🥬</span>
             </div>
             <div>
-              <h3 className="font-semibold text-xl mb-1">Always Fresh</h3>
+              <h3 className="font-bold text-xl mb-1">Always Fresh</h3>
               <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet, consecteturer adipiscing elit</p>
             </div>
           </div>
           {/* Feature 2 */}
           <div className="flex items-center gap-6">
-            <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-sm border-2 border-dotted border-gray-200">
+            <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center border-2 border-dotted border-gray-200">
               <span className="text-5xl">🌱</span>
             </div>
             <div>
-              <h3 className="font-semibold text-xl mb-1">100% Organic</h3>
+              <h3 className="font-bold text-xl mb-1">100% Organic</h3>
               <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet, consecteturer adipiscing elit</p>
             </div>
           </div>
           {/* Feature 3 */}
           <div className="flex items-center gap-6">
-            <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-sm border-2 border-dotted border-gray-200">
+            <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center border-2 border-dotted border-gray-200">
               <span className="text-5xl">🍃</span>
             </div>
             <div>
-              <h3 className="font-semibold text-xl mb-1">Premium Quality</h3>
+              <h3 className="font-bold text-xl mb-1">Premium Quality</h3>
               <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet, consecteturer adipiscing elit</p>
             </div>
           </div>
           {/* Feature 4 */}
           <div className="flex items-center gap-6">
-            <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-sm border-2 border-dotted border-gray-200">
+            <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center border-2 border-dotted border-gray-200">
               <span className="text-5xl">🥗</span>
             </div>
             <div>
-              <h3 className="font-semibold text-xl mb-1">Natural</h3>
+              <h3 className="font-bold text-xl mb-1">Natural</h3>
               <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet, consecteturer adipiscing elit</p>
             </div>
           </div>
@@ -152,6 +153,55 @@ export default function Home() {
 
       {/* Recommendations Section */}
       <Recommendations />
+
+      {/* Latest Blog Section */}
+      <section className="w-full max-w-[1600px] mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-center mb-2">Latest blog</h2>
+        <p className="text-center text-gray-400 mb-10">The freshest and most excitings news</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          {/* Blog Card 1 */}
+          <div>
+            <img src="https://images.pexels.com/photos/8845420/pexels-photo-8845420.jpeg" alt="Organic vs Non Organic Food Facts" className="w-full h-56 object-cover rounded-2xl mb-4" />
+            <div className="text-xs text-gray-400 tracking-widest mb-2">ORGANIC</div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Organic vs Non Organic Food Facts</h3>
+            <div className="flex items-center text-xs text-gray-400 gap-2">
+              <span className="material-icons text-base">event</span> 08 September
+              <span className="mx-1">|</span> NasaTheme
+            </div>
+          </div>
+          {/* Blog Card 2 */}
+          <div>
+            <img src="https://img.freepik.com/free-photo/healthy-snack-box-with-crackers-olives_144627-16525.jpg" alt="Your Gateway to a Holistic Lifestyle" className="w-full h-56 object-cover rounded-2xl mb-4" />
+            <div className="text-xs text-gray-400 tracking-widest mb-2">ORGANIC</div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Your Gateway to a Holistic Lifestyle</h3>
+            <div className="flex items-center text-xs text-gray-400 gap-2">
+              <span className="material-icons text-base">event</span> 08 September
+              <span className="mx-1">|</span> NasaTheme
+            </div>
+          </div>
+          {/* Blog Card 3 */}
+          <div>
+            <img src="https://img.freepik.com/free-photo/nachos-with-avocado-beer_144627-16526.jpg" alt="Organic Food — Kickstart Your Healthy Lifestyle" className="w-full h-56 object-cover rounded-2xl mb-4" />
+            <div className="text-xs text-gray-400 tracking-widest mb-2">ORGANIC</div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Organic Food — Kickstart Your Healthy Lifestyle</h3>
+            <div className="flex items-center text-xs text-gray-400 gap-2">
+              <span className="material-icons text-base">event</span> 08 September
+              <span className="mx-1">|</span> NasaTheme
+            </div>
+          </div>
+          {/* Blog Card 4 */}
+          <div>
+            <img src="https://img.freepik.com/free-photo/green-tea-ginger-lemon_144627-16527.jpg" alt="Unfolding the Benefits of Organic Green Tea" className="w-full h-56 object-cover rounded-2xl mb-4" />
+            <div className="text-xs text-gray-400 tracking-widest mb-2">ORGANIC</div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Unfolding the Benefits of Organic Green Tea</h3>
+            <div className="flex items-center text-xs text-gray-400 gap-2">
+              <span className="material-icons text-base">event</span> 08 September
+              <span className="mx-1">|</span> NasaTheme
+            </div>
+          </div>
+        </div>
+      </section>
+      <Footer />
     </div>
   );
 }
@@ -172,8 +222,8 @@ function Recommendations() {
   const products = {
     Featured: [
       { name: "Cherry Tomatoes", price: 9, img: "https://pngimg.com/uploads/tomato/tomato_PNG12588.png" },
-      { name: "Red Onion", price: 10, img: "https://pngimg.com/uploads/onion/onion_PNG10016.png" },
-      { name: "Red Cabbage", price: 15, img: "https://pngimg.com/uploads/cabbage/cabbage_PNG10013.png" },
+      { name: "Red Onion", price: 10, img: "https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=672,height=672,format=auto/https://doordash-static.s3.amazonaws.com/media/photosV2/5922c60a-f512-40fe-acf8-37085b77e000-retina-large.jpg" },
+      { name: "Red Cabbage", price: 15, img: "https://www.freshpoint.com/wp-content/uploads/2020/02/Freshpoint-red-cabbage.jpg" },
       { name: "Organic Lemon", price: 20, oldPrice: 25, badge: "-20%", limited: true, img: "https://pngimg.com/uploads/lemon/lemon_PNG25204.png" },
       { name: "Organic Almaverde", price: 18, img: "https://pngimg.com/uploads/zucchini/zucchini_PNG1.png" },
       { name: "Orange Cauliflower", price: 10, img: "https://pngimg.com/uploads/cauliflower/cauliflower_PNG12933.png" },
@@ -210,24 +260,23 @@ function Recommendations() {
     ],
   };
 
-  const currentProducts = products[activeTab] || [];
+  const currentProducts = (products[activeTab] || []).slice(0, 8);
 
   return (
     <section className="w-full max-w-[1600px] mx-auto px-4 py-16">
       <h2 className="text-2xl font-bold mb-8">Recommendations</h2>
       <div className="flex flex-col md:flex-row gap-8">
         {/* Left Card */}
-        <div className="relative rounded-3xl min-w-[320px] max-w-[400px] w-full mb-4 md:mb-0 h-[600px] overflow-hidden flex flex-col justify-end">
+        <div className="relative rounded-lg min-w-[320px] max-w-[400px] w-full mb-4 md:mb-0 h-[600px] overflow-hidden flex flex-col justify-end">
           {/* Background Image */}
           <img
-            src="https://images.pexels.com/photos/952476/pexels-photo-952476.jpeg"
-            alt="Organic Vegetables"
+            src="https://images.pexels.com/photos/8845420/pexels-photo-8845420.jpeg"
+            alt="Vegetables Basket"
             className="absolute inset-0 w-full h-full object-cover z-0 select-none pointer-events-none"
           />
           {/* Content at bottom */}
           <div className="relative z-10 p-8 pb-10 w-full flex flex-col items-start">
-            <h3 className="text-4xl font-bold mb-6 text-white leading-tight drop-shadow-lg">Organic<br />Vegetables<br />Everyday</h3>
-            <button className="bg-white text-black px-8 py-4 rounded-xl font-semibold shadow hover:bg-gray-100 transition-colors text-lg">Shop now</button>
+            <button className="bg-white text-black px-6 py-2 rounded-md font-semibold shadow hover:bg-gray-100 transition-colors text-sm">Shop now</button>
           </div>
         </div>
         {/* Right: Tabs and Product Grid */}
@@ -247,7 +296,7 @@ function Recommendations() {
           {/* Product Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {currentProducts.map((prod, idx) => (
-              <div key={prod.name + idx} className="bg-white rounded-2xl p-4 flex flex-col items-center text-center shadow-sm border border-gray-100 relative group transition-all">
+              <div key={prod.name + idx} className="bg-white rounded-lg p-4 flex flex-col items-center text-center border border-gray-200 relative group transition-all">
                 {/* Badges */}
                 {prod.badge && (
                   <span className="absolute top-3 left-3 bg-[#7bbf3a] text-white text-xs font-bold px-2 py-1 rounded">{prod.badge}</span>
