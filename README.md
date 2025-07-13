@@ -25,6 +25,14 @@ EcoCart is a modern, clean, and customizable e-commerce web application focused 
 - [Tailwind CSS](https://tailwindcss.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 
+## Screenshots
+
+![Home Page](./screenshots/home-page.png)
+![Recommendations Section](./screenshots/recommendations.png)
+![Shop Page](./screenshots/shop-page.png)
+![Product Detail](./screenshots/product-detail.png)
+
+
 ## Getting Started
 
 ### 1. Clone the Repository
@@ -78,13 +86,6 @@ EcoCart/
 - **Change Categories:** Update the `categories` array in `shop/page.tsx`.
 - **Styling:** Modify Tailwind classes or add your own styles for a unique look.
 - **Components:** Reuse or extend components in `src/components/` for new features.
-
-## Screenshots
-
-![Home Page](./screenshots/home-page.png)
-![Shop Page](./screenshots/shop-page.png)
-![Product Detail](./screenshots/product-detail.png)
-![Recommendations Section](./screenshots/recommendations.png)
 
 ## License
 
