@@ -1,4 +1,6 @@
 "use client";
+import Image from "next/image";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 
 const products = [
@@ -120,7 +122,7 @@ export default function ProductDetailPage() {
       <div className="max-w-[1200px] mx-auto w-full px-4 pt-8 pb-16">
         {/* Breadcrumb */}
         <div className="text-sm text-gray-500 mb-6 flex items-center gap-2">
-          <a href="/" className="hover:underline">Home</a>
+          <Link href="/" className="hover:underline">Home</Link>
           <span>/</span>
           <a href="#" className="hover:underline">Organics</a>
           <span>/</span>
@@ -134,10 +136,10 @@ export default function ProductDetailPage() {
           {/* Left: Images */}
           <div className="flex flex-col gap-4 items-center md:w-1/2">
             <div className="flex flex-col gap-4 items-center">
-              <img src={product.img} alt={product.name} className="w-80 h-80 object-contain rounded-xl bg-white border border-gray-100" />
+              <Image src={product.img} alt={product.name} width={320} height={320} className="w-80 h-80 object-contain rounded-xl bg-white border border-gray-100" />
               <div className="flex gap-2 mt-2">
-                <img src={product.img} alt="thumb" className="w-16 h-16 object-contain rounded border border-gray-200" />
-                <img src={product.img} alt="thumb2" className="w-16 h-16 object-contain rounded border border-gray-200 opacity-50" />
+                <Image src={product.img} alt="thumb" width={64} height={64} className="w-16 h-16 object-contain rounded border border-gray-200" />
+                <Image src={product.img} alt="thumb2" width={64} height={64} className="w-16 h-16 object-contain rounded border border-gray-200 opacity-50" />
               </div>
             </div>
             <div className="flex gap-2 mt-4">
@@ -162,7 +164,7 @@ export default function ProductDetailPage() {
               <span className="text-2xl font-bold text-black">${product.price.toFixed(2)}</span>
             </div>
             <div className="text-sm text-gray-500 mb-2">6 sold in last 2 hours</div>
-            <div className="text-gray-700 text-sm mb-4">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
+            <div className="text-gray-700 text-sm mb-4">Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s.</div>
             {/* Sale Timer */}
             <div className="mb-4">
               <div className="text-sm font-semibold text-gray-700 mb-1">Hurry up! Sale end in:</div>
@@ -216,12 +218,12 @@ export default function ProductDetailPage() {
             </div>
             {/* Payment Methods */}
             <div className="mt-6 flex gap-2 items-center">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" className="h-6" />
-              <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard" className="h-6" />
-              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/PayPal_2014_logo.png" alt="PayPal" className="h-6" />
-              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Apple_Pay_logo.png" alt="Apple Pay" className="h-6" />
-              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Amazon_Pay_logo.svg" alt="Amazon Pay" className="h-6" />
-              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/BitPay_logo.png" alt="BitPay" className="h-6" />
+              <Image src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" width={48} height={24} className="h-6" />
+              <Image src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard" width={48} height={24} className="h-6" />
+              <Image src="https://upload.wikimedia.org/wikipedia/commons/5/5e/PayPal_2014_logo.png" alt="PayPal" width={48} height={24} className="h-6" />
+              <Image src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Apple_Pay_logo.png" alt="Apple Pay" width={48} height={24} className="h-6" />
+              <Image src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Amazon_Pay_logo.svg" alt="Amazon Pay" width={48} height={24} className="h-6" />
+              <Image src="https://upload.wikimedia.org/wikipedia/commons/6/6a/BitPay_logo.png" alt="BitPay" width={48} height={24} className="h-6" />
             </div>
           </div>
         </div>

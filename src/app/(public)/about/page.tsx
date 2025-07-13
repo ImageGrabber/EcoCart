@@ -6,7 +6,7 @@ const faqs = [
   {
     title: "Best Quantity",
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   },
   { title: "Customer Care", content: "..." },
   { title: "Support 24/7", content: "..." },
@@ -23,13 +23,15 @@ export default function AboutPage() {
         <div className="flex flex-col md:flex-row gap-12 mt-12 mb-16">
           <div className="flex-1">
             <h1 className="text-3xl font-bold mb-6 text-gray-900">Our Story</h1>
-            <p className="mb-4 text-gray-900">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p className="mb-4 text-gray-900">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
             <p className="text-gray-900">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
           </div>
           <div className="flex-1 flex items-center justify-center">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80"
               alt="Store interior"
+              width={600}
+              height={320}
               className="rounded-lg w-full h-[320px] object-cover"
             />
           </div>
@@ -70,7 +72,7 @@ export default function AboutPage() {
               <div className="flex justify-between mb-1"><span>Sunday:</span><span>Closed</span></div>
             </div>
             <h2 className="text-xl font-semibold mb-2 text-gray-900">Career</h2>
-            <p className="text-gray-900 text-sm">If you're interested in employment opportunities at Elessi, please email us:<br/>contact@yourstore.com</p>
+            <p className="text-gray-900 text-sm">If you&apos;re interested in employment opportunities at Elessi, please email us:<br/>contact@yourstore.com</p>
           </div>
         </div>
       </div>

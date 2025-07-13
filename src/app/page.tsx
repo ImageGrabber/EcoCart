@@ -1,15 +1,24 @@
 "use client";
 
-import { HiOutlineUser, HiOutlineShoppingCart, HiOutlineHeart, HiOutlineArrowsRightLeft, HiOutlineBars3 } from "react-icons/hi2";
+import Image from "next/image";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-// Move products variable here so it is accessible globally
+// Define a Product type for all product arrays
+interface Product {
+  name: string;
+  price: number;
+  img: string;
+  badge?: string;
+  limited?: boolean;
+  oldPrice?: number;
+}
+
 // Sample product data for each tab
-const products = {
+const products: Record<string, Product[]> = {
   Featured: [
     { name: "Cherry Tomatoes", badge: "-7%", price: 9, img: "https://pngimg.com/uploads/tomato/tomato_PNG12588.png" },
     { name: "Red Onion", price: 10, img: "https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=672,height=672,format=auto/https://doordash-static.s3.amazonaws.com/media/photosV2/5922c60a-f512-40fe-acf8-37085b77e000-retina-large.jpg" },
@@ -75,19 +84,20 @@ const products = {
   ],
 };
 
-export default function Home() {
-  const [lang, setLang] = useState("English");
-  const [currency, setCurrency] = useState("US Dollar");
+type ProductTab = keyof typeof products;
 
+export default function Home() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* Hero Banner - Screenshot Style */}
       <section className="w-full max-w-[1600px] mx-auto flex flex-col md:flex-row gap-6 px-4 py-8 items-stretch bg-white">
         {/* Left: Image */}
         <div className="flex-1 flex items-center justify-center rounded-2xl overflow-hidden bg-white min-h-[350px]">
-          <img
+          <Image
             src="https://www.pngmart.com/files/3/Vegetable-PNG-Photos.png"
             alt="Groceries"
+            width={400}
+            height={400}
             className="object-cover w-full h-full max-h-[400px]"
           />
         </div>
@@ -116,9 +126,11 @@ export default function Home() {
                   <span className="text-[#7bbf3a]">30%</span> <span className="text-gray-900">SALE OFF</span>
                 </h2>
                 <p className="text-gray-800 mb-1 text-sm">Spring Fresh Fruit<br/>Special Offer.</p>
-                <img
+                <Image
                   src="https://www.pngarts.com/files/3/Vegetable-PNG-Picture.png"
                   alt="Oranges"
+                  width={400}
+                  height={300}
                   className="absolute right-0 bottom-0 w-[95%] h-[80%] object-contain select-none pointer-events-none"
                   style={{ zIndex: 1 }}
                 />
@@ -130,9 +142,11 @@ export default function Home() {
                   <span className="text-[#7bbf3a]">Buy 1 Get 1</span> <span className="text-gray-900">FREE</span>
                 </h2>
                 <p className="text-gray-800 mb-1 text-sm">Fresh Red Onions<br/>Today Only.</p>
-                <img
+                <Image
                   src="https://www.freepnglogos.com/uploads/vegetables-png/vegetables-about-our-philosophy-super-healthy-kids-23.png"
                   alt="Fresh Vegetables"
+                  width={400}
+                  height={300}
                   className="absolute right-0 bottom-0 w-[85%] h-[65%] object-contain select-none pointer-events-none"
                   style={{ zIndex: 1 }}
                 />
@@ -202,8 +216,6 @@ export default function Home() {
               <div className="text-xl md:text-1xl font-medium mb-6">Sale off <span className="text-red-600 font-bold">25%</span></div>
               <button className="bg-lime-600 hover:bg-lime-700 text-white text-sm font-semibold px-8 py-3 rounded-lg shadow transition">Shop Now</button>
             </div>
-            {/* Bag Image on Right */}
-            
             {/* Overlay for rounded corners */}
             <div className="absolute inset-0 rounded-xl pointer-events-none" style={{background: 'rgba(255,255,255,0.01)'}}></div>
           </div>
@@ -213,10 +225,7 @@ export default function Home() {
             <div className="flex-1 z-10">
               <h3 className="text-3xl md:text-2xl font-bold text-gray-900 mb-6">EcoCart<br/>Apple Oil</h3>
               <div className="text-xl md:text-1xl font-medium mb-6">Sale off <span className="text-red-600 font-bold">25%</span></div>
-              
             </div>
-            {/* Bag Image on Right */}
-            
             {/* Overlay for rounded corners */}
             <div className="absolute inset-0 rounded-xl pointer-events-none" style={{background: 'rgba(255,255,255,0.01)'}}></div>
           </div>
@@ -227,20 +236,15 @@ export default function Home() {
               <h3 className="text-3xl md:text-2xl font-bold text-gray-900 mb-6">EcoCart<br/>Fresh Fruits</h3>
               <div className="text-xl md:text-1xl font-medium mb-6">Sale <span className="text-red-600 font-bold">10%</span></div>
               <button className="bg-lime-600 hover:bg-lime-700 text-white text-sm font-semibold px-8 py-3 rounded-lg shadow transition">Shop Now</button>
-             
             </div>
-            {/* Bag Image on Right */}
-            
             {/* Overlay for rounded corners */}
             <div className="absolute inset-0 rounded-xl pointer-events-none" style={{background: 'rgba(255,255,255,0.01)'}}></div>
           </div>
         </div>
       </section>
 
-      {/* Best Selling Section with new RecommendationsAlt */}
+      {/* Best Selling Section */}
       <BestSellingRecommendations />
-
-     
 
       {/* Latest Blog Section */}
       <section className="w-full max-w-[1600px] mx-auto px-4 py-16">
@@ -249,7 +253,7 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {/* Blog Card 1 */}
           <div>
-            <img src="https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg" alt="Organic vs Non Organic Food Facts" className="w-full h-56 object-cover rounded-2xl mb-4" />
+            <Image src="https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg" alt="Organic vs Non Organic Food Facts" width={400} height={224} className="w-full h-56 object-cover rounded-2xl mb-4" />
             <div className="text-xs text-gray-400 tracking-widest mb-2">ORGANIC</div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Organic vs Non Organic Food Facts</h3>
             <div className="flex items-center text-xs text-gray-400 gap-2">
@@ -259,7 +263,7 @@ export default function Home() {
           </div>
           {/* Blog Card 2 */}
           <div>
-            <img src="https://images.pexels.com/photos/3872406/pexels-photo-3872406.jpeg" alt="Your Gateway to a Holistic Lifestyle" className="w-full h-56 object-cover rounded-2xl mb-4" />
+            <Image src="https://images.pexels.com/photos/3872406/pexels-photo-3872406.jpeg" alt="Your Gateway to a Holistic Lifestyle" width={400} height={224} className="w-full h-56 object-cover rounded-2xl mb-4" />
             <div className="text-xs text-gray-400 tracking-widest mb-2">ORGANIC</div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Your Gateway to a Holistic Lifestyle</h3>
             <div className="flex items-center text-xs text-gray-400 gap-2">
@@ -269,7 +273,7 @@ export default function Home() {
           </div>
           {/* Blog Card 3 */}
           <div>
-            <img src="https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg" alt="Organic Food — Kickstart Your Healthy Lifestyle" className="w-full h-56 object-cover rounded-2xl mb-4" />
+            <Image src="https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg" alt="Organic Food — Kickstart Your Healthy Lifestyle" width={400} height={224} className="w-full h-56 object-cover rounded-2xl mb-4" />
             <div className="text-xs text-gray-400 tracking-widest mb-2">ORGANIC</div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Organic Food — Kickstart Your Healthy Lifestyle</h3>
             <div className="flex items-center text-xs text-gray-400 gap-2">
@@ -279,7 +283,7 @@ export default function Home() {
           </div>
           {/* Blog Card 4 */}
           <div>
-            <img src="https://images.pexels.com/photos/4552171/pexels-photo-4552171.jpeg" alt="Unfolding the Benefits of Organic Green Tea" className="w-full h-56 object-cover rounded-2xl mb-4" />
+            <Image src="https://images.pexels.com/photos/4552171/pexels-photo-4552171.jpeg" alt="Unfolding the Benefits of Organic Green Tea" width={400} height={224} className="w-full h-56 object-cover rounded-2xl mb-4" />
             <div className="text-xs text-gray-400 tracking-widest mb-2">ORGANIC</div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Unfolding the Benefits of Organic Green Tea</h3>
             <div className="flex items-center text-xs text-gray-400 gap-2">
@@ -295,7 +299,7 @@ export default function Home() {
 
 // Recommendations Section Component
 function Recommendations() {
-  const tabs = [
+  const tabs: ProductTab[] = [
     "Featured",
     "Popular",
     "Best Selling",
@@ -303,7 +307,7 @@ function Recommendations() {
     "On Sale",
     "New Added",
   ];
-  const [activeTab, setActiveTab] = useState("Featured");
+  const [activeTab, setActiveTab] = useState<ProductTab>("Featured");
 
   const currentProducts = (products[activeTab] || []).slice(0, 8);
 
@@ -314,9 +318,11 @@ function Recommendations() {
         {/* Left Card */}
         <div className="relative rounded-lg min-w-[320px] max-w-[400px] w-full mb-4 md:mb-0 h-[600px] overflow-hidden flex flex-col justify-end">
           {/* Background Image */}
-          <img
+          <Image
             src="https://images.pexels.com/photos/8845420/pexels-photo-8845420.jpeg"
             alt="Vegetables Basket"
+            width={400}
+            height={600}
             className="absolute inset-0 w-full h-full object-cover z-0 select-none pointer-events-none"
           />
           {/* Content at bottom */}
@@ -350,7 +356,7 @@ function Recommendations() {
                   <span className="absolute top-3 right-3 bg-yellow-400 text-white text-xs font-bold px-2 py-1 rounded">LIMITED</span>
                 )}
                 {/* Product Image */}
-                <img src={prod.img} alt={prod.name} className="w-24 h-24 object-contain mb-4" />
+                <Image src={prod.img} alt={prod.name} width={96} height={96} className="w-24 h-24 object-contain mb-4" />
                 {/* Product Name */}
                 <h4 className="font-semibold text-gray-900 mb-1 text-base">{prod.name}</h4>
                 {/* Price */}
@@ -373,113 +379,6 @@ function Recommendations() {
   );
 }
 
-// New RecommendationsAlt component
-function RecommendationsAlt() {
-  const tabs = [
-    "All",
-    "Fruits & Vegetables",
-    "Frozen Seafoods",
-    "Raw Meats",
-    "Coffees & Teas",
-    "Pet Foods",
-  ];
-  const [activeTab, setActiveTab] = useState("All");
-
-  // Sample product data for each tab
-  const altProducts = {
-    All: [
-      { name: "Apple", price: 3, img: "https://pngimg.com/uploads/apple/apple_PNG12433.png" },
-      { name: "Salmon Fillet", price: 12, img: "https://coasttocoastseafood.ca/cdn/shop/products/GO41005_800x_8a954d24-f900-424d-930b-40e45683a51e.webp?v=1667101786" },
-      { name: "Chicken Breast", price: 8, img: "https://platform.relish.com/wp-content/uploads/2023/06/Boneless-Skinless-Chicken-Breast.png" },
-      { name: "Coffee Beans", price: 5, img: "https://www.thesourcebulkfoods.ca/wp-content/uploads/2020/02/600001_UK-Coffee-Beans.jpg" },
-      { name: "Dog Food", price: 10, img: "https://pngimg.com/uploads/dog_food/dog_food_PNG31.png" },
-      { name: "Banana", price: 2, img: "https://pngimg.com/uploads/banana/banana_PNG842.png" },
-      { name: "Tea Box", price: 4, img: "https://images.homedepot.ca/productimages/p_1001756596.jpg?product-images=l" },
-      { name: "Shrimp", price: 14, img: "https://www.seafoodwatch.org/globalassets/sfw/images/fish/dynamic-tab/brown-shrimp-dynamic.png" },
-    ],
-    "Fruits & Vegetables": [
-      { name: "Apple", price: 3, img: "https://pngimg.com/uploads/apple/apple_PNG12433.png" },
-      { name: "Banana", price: 2, img: "https://pngimg.com/uploads/banana/banana_PNG842.png" },
-      { name: "Carrot", price: 1, img: "https://pngimg.com/uploads/carrot/carrot_PNG4980.png" },
-      { name: "Broccoli", price: 2, img: "https://pngimg.com/uploads/broccoli/broccoli_PNG7288.png" },
-      { name: "Tomato", price: 2, img: "https://pngimg.com/uploads/tomato/tomato_PNG12588.png" },
-      { name: "Lettuce", price: 2, img: "https://pngimg.com/uploads/lettuce/lettuce_PNG10218.png" },
-      { name: "Orange", price: 3, img: "https://pngimg.com/uploads/orange/orange_PNG807.png" },
-      { name: "Potato", price: 1, img: "https://pngimg.com/uploads/potato/potato_PNG10117.png" },
-    ],
-    "Frozen Seafoods": [
-      { name: "Salmon Fillet", price: 12, img: "https://coasttocoastseafood.ca/cdn/shop/products/GO41005_800x_8a954d24-f900-424d-930b-40e45683a51e.webp?v=1667101786" },
-      { name: "Shrimp", price: 14, img: "https://www.seafoodwatch.org/globalassets/sfw/images/fish/dynamic-tab/brown-shrimp-dynamic.png" },
-      { name: "Crab", price: 16, img: "https://pngimg.com/uploads/crab/crab_PNG18708.png" },
-      { name: "Lobster", price: 20, img: "https://pngimg.com/uploads/lobster/lobster_PNG18708.png" },
-      { name: "Tuna Steak", price: 13, img: "https://pngimg.com/uploads/tuna/tuna_PNG9.png" },
-      { name: "Squid", price: 11, img: "https://pngimg.com/uploads/squid/squid_PNG18708.png" },
-      { name: "Mussels", price: 10, img: "https://pngimg.com/uploads/mussel/mussel_PNG18708.png" },
-      { name: "Octopus", price: 15, img: "https://pngimg.com/uploads/octopus/octopus_PNG18708.png" },
-    ],
-    "Raw Meats": [
-      { name: "Chicken Breast", price: 8, img: "https://platform.relish.com/wp-content/uploads/2023/06/Boneless-Skinless-Chicken-Breast.png" },
-      { name: "Pork Chop", price: 9, img: "https://pngimg.com/uploads/pork/pork_PNG44.png" },
-      { name: "Beef Steak", price: 15, img: "https://pngimg.com/uploads/beef/beef_PNG35.png" },
-      { name: "Lamb Chop", price: 14, img: "https://pngimg.com/uploads/lamb/lamb_PNG18708.png" },
-      { name: "Turkey Leg", price: 7, img: "https://pngimg.com/uploads/turkey/turkey_PNG18708.png" },
-      { name: "Duck Breast", price: 10, img: "https://pngimg.com/uploads/duck/duck_PNG18708.png" },
-      { name: "Sausage", price: 6, img: "https://pngimg.com/uploads/sausage/sausage_PNG18708.png" },
-      { name: "Bacon", price: 5, img: "https://pngimg.com/uploads/bacon/bacon_PNG18708.png" },
-    ],
-    "Coffees & Teas": [
-      { name: "Coffee Beans", price: 5, img: "https://www.thesourcebulkfoods.ca/wp-content/uploads/2020/02/600001_UK-Coffee-Beans.jpg" },
-      { name: "Tea Box", price: 4, img: "https://images.homedepot.ca/productimages/p_1001756596.jpg?product-images=l" },
-      { name: "Green Tea", price: 6, img: "https://pngimg.com/uploads/tea/tea_PNG9883.png" },
-      { name: "Black Coffee", price: 5, img: "https://pngimg.com/uploads/coffee/coffee_PNG10404.png" },
-      { name: "Herbal Tea", price: 7, img: "https://pngimg.com/uploads/tea/tea_PNG9884.png" },
-      { name: "Espresso", price: 6, img: "https://pngimg.com/uploads/coffee/coffee_PNG10405.png" },
-      { name: "Latte", price: 7, img: "https://pngimg.com/uploads/coffee/coffee_PNG10406.png" },
-      { name: "Iced Tea", price: 4, img: "https://pngimg.com/uploads/tea/tea_PNG9885.png" },
-    ],
-    "Pet Foods": [
-      { name: "Dog Food", price: 10, img: "https://pngimg.com/uploads/dog_food/dog_food_PNG31.png" },
-      { name: "Cat Food", price: 9, img: "https://pngimg.com/uploads/cat_food/cat_food_PNG31.png" },
-      { name: "Bird Seed", price: 6, img: "https://pngimg.com/uploads/bird_seed/bird_seed_PNG31.png" },
-      { name: "Fish Flakes", price: 5, img: "https://pngimg.com/uploads/fish_flakes/fish_flakes_PNG31.png" },
-      { name: "Rabbit Pellets", price: 7, img: "https://pngimg.com/uploads/rabbit_food/rabbit_food_PNG31.png" },
-      { name: "Hamster Mix", price: 6, img: "https://pngimg.com/uploads/hamster_food/hamster_food_PNG31.png" },
-      { name: "Turtle Food", price: 8, img: "https://pngimg.com/uploads/turtle_food/turtle_food_PNG31.png" },
-      { name: "Horse Feed", price: 12, img: "https://pngimg.com/uploads/horse_feed/horse_feed_PNG31.png" },
-    ],
-  };
-
-  const currentProducts = (altProducts[activeTab] || []).slice(0, 8);
-
-  return (
-    <section className="w-full max-w-[1600px] mx-auto px-4 py-16">
-      <h2 className="text-2xl font-bold mb-8">Shop by Category</h2>
-      <div className="flex gap-6 mb-6 border-b border-gray-100 text-sm font-medium overflow-x-auto">
-        {tabs.map(tab => (
-          <button
-            key={tab}
-            className={`pb-2 transition-colors whitespace-nowrap ${activeTab === tab ? "border-b-2 border-gray-900 text-gray-900" : "text-gray-400 hover:text-gray-900"}`}
-            onClick={() => setActiveTab(tab)}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-        {currentProducts.map((prod, idx) => (
-          <div key={prod.name + idx} className="bg-white rounded-lg p-4 flex flex-col items-center text-center border border-gray-200 relative group transition-all">
-            <img src={prod.img} alt={prod.name} className="w-24 h-24 object-contain mb-4" />
-            <h4 className="font-semibold text-gray-900 mb-1 text-base">{prod.name}</h4>
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <span className="text-gray-900 font-bold text-lg">${prod.price.toFixed(2)}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 // BestSellingRecommendations: same layout as Recommendations, but with new categories and altProducts
 function BestSellingRecommendations() {
   const tabs = [
@@ -490,9 +389,9 @@ function BestSellingRecommendations() {
     "Coffees & Teas",
     "Pet Foods",
   ];
-  const [activeTab, setActiveTab] = useState("All");
+  const [activeTab, setActiveTab] = useState<string>("All");
 
-  const altProducts = {
+  const altProducts: Record<string, Product[]> = {
     All: [
       { name: "Apple", price: 3, img: "https://pngimg.com/uploads/apple/apple_PNG12433.png" },
       { name: "Salmon Fillet", price: 12, img: "https://coasttocoastseafood.ca/cdn/shop/products/GO41005_800x_8a954d24-f900-424d-930b-40e45683a51e.webp?v=1667101786" },
@@ -564,9 +463,11 @@ function BestSellingRecommendations() {
         {/* Left Card */}
         <div className="relative rounded-lg min-w-[320px] max-w-[400px] w-full mb-4 md:mb-0 h-[600px] overflow-hidden flex flex-col justify-end">
           {/* Background Image */}
-          <img
+          <Image
             src="https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg"
             alt="Vegetables Basket"
+            width={400}
+            height={600}
             className="absolute inset-0 w-full h-full object-cover z-0 select-none pointer-events-none"
           />
           {/* Content at bottom */}
@@ -592,7 +493,7 @@ function BestSellingRecommendations() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {currentProducts.map((prod, idx) => (
               <div key={prod.name + idx} className="bg-white rounded-lg p-4 flex flex-col items-center text-center border border-gray-200 relative group transition-all">
-                <img src={prod.img} alt={prod.name} className="w-24 h-24 object-contain mb-4" />
+                <Image src={prod.img} alt={prod.name} width={96} height={96} className="w-24 h-24 object-contain mb-4" />
                 <h4 className="font-semibold text-gray-900 mb-1 text-base">{prod.name}</h4>
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <span className="text-gray-900 font-bold text-lg">${prod.price.toFixed(2)}</span>
@@ -604,4 +505,4 @@ function BestSellingRecommendations() {
       </div>
     </section>
   );
-}
+} 

@@ -1,6 +1,6 @@
 "use client";
 
-import Footer from '@/components/Footer';
+import Image from "next/image";
 import { useState } from 'react';
 import Link from "next/link";
 
@@ -119,7 +119,6 @@ function slugify(name: string) {
 }
 
 export default function ShopPage() {
-  const [activeCategory, setActiveCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 8;
   return (
@@ -129,7 +128,7 @@ export default function ShopPage() {
         <div className="text-center">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center justify-center gap-2 mb-4 text-sm">
-            <a href="/" className="text-gray-600 hover:text-black transition-colors">Home</a>
+            <Link href="/" className="text-gray-600 hover:text-black transition-colors">Home</Link>
             <span className="text-gray-400">/</span>
             <span className="text-black font-medium">Shop</span>
           </div>
@@ -141,7 +140,7 @@ export default function ShopPage() {
       <div className="flex flex-row items-center justify-center gap-10 py-8 px-4 overflow-x-auto bg-white">
         {categories.map((cat) => (
           <div key={cat.name} className="flex flex-col items-center min-w-[140px] p-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:bg-white cursor-pointer">
-            <img src={cat.img} alt={cat.name} className="w-24 h-24 object-contain mb-3" />
+            <Image src={cat.img} alt={cat.name} width={96} height={96} className="w-24 h-24 object-contain mb-3" />
             <span className="text-base font-medium text-gray-700 text-center">{cat.name}</span>
           </div>
         ))}
@@ -189,7 +188,7 @@ export default function ShopPage() {
                 </span>
               )}
               {/* Product Image */}
-              <img src={prod.img} alt={prod.name} className="w-28 h-28 object-contain mb-4" />
+              <Image src={prod.img} alt={prod.name} width={112} height={112} className="w-28 h-28 object-contain mb-4" />
               {/* Name */}
               <div className="font-semibold text-lg text-gray-900 mb-2">{prod.name}</div>
               {/* Price */}
