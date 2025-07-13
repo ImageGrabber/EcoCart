@@ -1,6 +1,7 @@
 "use client";
 import { HiOutlineUser, HiOutlineShoppingCart, HiOutlineHeart, HiOutlineArrowsRightLeft, HiOutlineBars3 } from "react-icons/hi2";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function HomeHeader() {
   const [lang, setLang] = useState("English");
@@ -60,12 +61,12 @@ export default function HomeHeader() {
             BROWSE CATEGORIES
           </button>
           <div className="flex gap-6 ml-4 text-sm font-medium text-gray-900">
-            <a href="#" className="hover:text-[#7bbf3a]">Home</a>
-            <a href="#" className="hover:text-[#7bbf3a]">Shop</a>
-            <a href="#" className="hover:text-[#7bbf3a]">Elements</a>
-            <a href="#" className="hover:text-[#7bbf3a]">Pages</a>
-            <a href="#" className="hover:text-[#7bbf3a]">Vendors</a>
-            <a href="/about" className="hover:text-[#7bbf3a]">About Us</a>
+            <Link href="/" className="hover:text-[#7bbf3a]">Home</Link>
+            <Link href="/shop" className="hover:text-[#7bbf3a]">Shop</Link>
+            <Link href="#" className="hover:text-[#7bbf3a]">Elements</Link>
+            <Link href="#" className="hover:text-[#7bbf3a]">Pages</Link>
+            <Link href="#" className="hover:text-[#7bbf3a]">Vendors</Link>
+            <Link href="/about" className="hover:text-[#7bbf3a]">About Us</Link>
           </div>
         </div>
       </nav>
