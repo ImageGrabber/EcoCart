@@ -1,5 +1,11 @@
 # EcoCart
 
+> **A modern, organic food e-commerce template built with Next.js, React, and Tailwind CSS.**
+
+- **Live Demo:** _coming soon_
+- **Website:** [https://your-ecocart-demo.com](https://your-ecocart-demo.com)
+- **Topics:** nextjs, react, tailwindcss, ecommerce, organic, food, shop, template, modern-ui
+
 EcoCart is a modern, clean, and customizable e-commerce web application focused on organic food and grocery shopping. Built with Next.js and React, it provides a beautiful shopping experience with a responsive product grid, detailed product pages, and a fresh, organic design.
 
 ## Features
