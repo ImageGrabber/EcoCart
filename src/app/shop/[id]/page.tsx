@@ -159,29 +159,29 @@ export default function ProductDetailPage() {
             </div>
             <div className="flex items-center gap-4 mb-2">
               {product.oldPrice && <span className="text-gray-400 line-through text-lg">${product.oldPrice.toFixed(2)}</span>}
-              <span className="text-2xl font-bold text-gray-900">${product.price.toFixed(2)}</span>
+              <span className="text-2xl font-bold text-black">${product.price.toFixed(2)}</span>
             </div>
             <div className="text-sm text-gray-500 mb-2">6 sold in last 2 hours</div>
-            <div className="text-gray-400 text-sm mb-4">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
+            <div className="text-gray-700 text-sm mb-4">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
             {/* Sale Timer */}
             <div className="mb-4">
               <div className="text-sm font-semibold text-gray-700 mb-1">Hurry up! Sale end in:</div>
               <div className="flex gap-2 text-center">
                 <div className="bg-gray-100 rounded p-2 w-16">
-                  <div className="text-lg font-bold">170</div>
-                  <div className="text-xs text-gray-500">DAYS</div>
+                  <div className="text-lg font-bold text-black">170</div>
+                  <div className="text-xs text-gray-800">DAYS</div>
                 </div>
                 <div className="bg-gray-100 rounded p-2 w-16">
-                  <div className="text-lg font-bold">19</div>
-                  <div className="text-xs text-gray-500">HOURS</div>
+                  <div className="text-lg font-bold text-black">19</div>
+                  <div className="text-xs text-gray-800">HOURS</div>
                 </div>
                 <div className="bg-gray-100 rounded p-2 w-16">
-                  <div className="text-lg font-bold">14</div>
-                  <div className="text-xs text-gray-500">MINS</div>
+                  <div className="text-lg font-bold text-black">14</div>
+                  <div className="text-xs text-gray-800">MINS</div>
                 </div>
                 <div className="bg-gray-100 rounded p-2 w-16">
-                  <div className="text-lg font-bold">23</div>
-                  <div className="text-xs text-gray-500">SECS</div>
+                  <div className="text-lg font-bold text-black">23</div>
+                  <div className="text-xs text-gray-800">SECS</div>
                 </div>
               </div>
             </div>
@@ -190,9 +190,9 @@ export default function ProductDetailPage() {
             {/* Quantity and Actions */}
             <div className="flex items-center gap-4 mb-4">
               <div className="flex items-center border border-gray-200 rounded">
-                <button className="px-3 py-1 text-lg">-</button>
-                <span className="px-4">1</span>
-                <button className="px-3 py-1 text-lg">+</button>
+                <button className="px-3 py-1 text-lg text-gray-900">-</button>
+                <span className="px-4 text-black">1</span>
+                <button className="px-3 py-1 text-lg text-gray-900">+</button>
               </div>
               <button className="bg-lime-600 hover:bg-lime-700 text-white font-semibold px-8 py-3 rounded-lg shadow transition">ADD TO CART</button>
               <button className="bg-white border border-lime-600 text-lime-600 font-semibold px-8 py-3 rounded-lg shadow transition hover:bg-lime-50">BUY NOW</button>

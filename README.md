@@ -75,8 +75,10 @@ EcoCart/
 
 ## Screenshots
 
+![Home Page](./screenshots/home-page.png)
 ![Shop Page](./screenshots/shop-page.png)
 ![Product Detail](./screenshots/product-detail.png)
+![Recommendations Section](./screenshots/recommendations.png)
 
 ## License
 
