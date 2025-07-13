@@ -2,6 +2,7 @@
 
 import Footer from '@/components/Footer';
 import { useState } from 'react';
+import Link from "next/link";
 
 const categories = [
   { name: 'Milks & Creams', img: 'https://elessi.b-cdn.net/elementor/wp-content/uploads/2016/06/organic-cat5.jpg' },
@@ -113,6 +114,10 @@ const products = [
   },
 ];
 
+function slugify(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
 export default function ShopPage() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
@@ -167,35 +172,39 @@ export default function ShopPage() {
         {products
           .slice((currentPage - 1) * productsPerPage, currentPage * productsPerPage)
           .map((prod, idx) => (
-          <div key={prod.name + idx} className="bg-white rounded-lg shadow-sm border border-gray-50 p-6 flex flex-col items-center relative group transition-all">
-            {/* Wishlist icon */}
-            <button className="absolute top-4 right-4 text-gray-300 hover:text-lime-600">
-              <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 21C12 21 4 13.5 4 8.5C4 5.5 6.5 3 9.5 3C11.04 3 12.5 3.99 13.07 5.36C13.64 3.99 15.1 3 16.65 3C19.65 3 22.15 5.5 22.15 8.5C22.15 13.5 12 21 12 21Z"/></svg>
-            </button>
-            {/* Badge */}
-            {prod.badge && (
-              <span className="absolute top-4 left-4 text-xs font-bold px-2 py-1 rounded bg-lime-500 text-white">
-                {prod.badge}
-                {prod.limited && <span className="ml-1 bg-yellow-400 text-white px-1 rounded">LIMITED</span>}
-              </span>
-            )}
-            {/* Product Image */}
-            <img src={prod.img} alt={prod.name} className="w-28 h-28 object-contain mb-4" />
-            {/* Name */}
-            <div className="font-semibold text-lg text-gray-900 mb-2">{prod.name}</div>
-            {/* Price */}
-            <div className="flex items-center gap-2 mb-2">
-              {prod.oldPrice && <span className="line-through text-gray-400">${prod.oldPrice.toFixed(2)}</span>}
-              <span className="text-gray-900 font-bold text-lg">${prod.price.toFixed(2)}</span>
-            </div>
-            {/* Weights */}
-            <div className="flex gap-2 mb-2">
-              {prod.weights && prod.weights.map((w, i) => (
-                <span key={i} className="border border-gray-200 rounded px-2 py-0.5 text-xs text-gray-500">{w}</span>
-              ))}
-            </div>
-          </div>
-        ))}
+            <Link
+              key={prod.name + idx}
+              href={`/shop/${slugify(prod.name)}`}
+              className="bg-white rounded-lg shadow-sm border border-gray-50 p-6 flex flex-col items-center relative group transition-all hover:shadow-lg"
+            >
+              {/* Wishlist icon */}
+              <button className="absolute top-4 right-4 text-gray-300 hover:text-lime-600" onClick={e => e.preventDefault()}>
+                <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 21C12 21 4 13.5 4 8.5C4 5.5 6.5 3 9.5 3C11.04 3 12.5 3.99 13.07 5.36C13.64 3.99 15.1 3 16.65 3C19.65 3 22.15 5.5 22.15 8.5C22.15 13.5 12 21 12 21Z"/></svg>
+              </button>
+              {/* Badge */}
+              {prod.badge && (
+                <span className="absolute top-4 left-4 text-xs font-bold px-2 py-1 rounded bg-lime-500 text-white">
+                  {prod.badge}
+                  {prod.limited && <span className="ml-1 bg-yellow-400 text-white px-1 rounded">LIMITED</span>}
+                </span>
+              )}
+              {/* Product Image */}
+              <img src={prod.img} alt={prod.name} className="w-28 h-28 object-contain mb-4" />
+              {/* Name */}
+              <div className="font-semibold text-lg text-gray-900 mb-2">{prod.name}</div>
+              {/* Price */}
+              <div className="flex items-center gap-2 mb-2">
+                {prod.oldPrice && <span className="line-through text-gray-400">${prod.oldPrice.toFixed(2)}</span>}
+                <span className="text-gray-900 font-bold text-lg">${prod.price.toFixed(2)}</span>
+              </div>
+              {/* Weights */}
+              <div className="flex gap-2 mb-2">
+                {prod.weights && prod.weights.map((w, i) => (
+                  <span key={i} className="border border-gray-200 rounded px-2 py-0.5 text-xs text-gray-500">{w}</span>
+                ))}
+              </div>
+            </Link>
+          ))}
       </div>
       {/* Pagination */}
       <div className="max-w-6xl mx-auto w-full px-4 pb-16 mt-8">
