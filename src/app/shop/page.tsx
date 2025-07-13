@@ -197,7 +197,6 @@ export default function ShopPage() {
           </div>
         ))}
       </div>
-      
       {/* Pagination */}
       <div className="max-w-6xl mx-auto w-full px-4 pb-16 mt-8">
         <div className="flex justify-center items-center gap-2">
@@ -208,7 +207,6 @@ export default function ShopPage() {
           >
             Previous
           </button>
-          
           {Array.from({ length: Math.ceil(products.length / productsPerPage) }, (_, i) => i + 1).map((page) => (
             <button
               key={page}
@@ -222,7 +220,6 @@ export default function ShopPage() {
               {page}
             </button>
           ))}
-          
           <button
             onClick={() => setCurrentPage(Math.min(Math.ceil(products.length / productsPerPage), currentPage + 1))}
             disabled={currentPage === Math.ceil(products.length / productsPerPage)}
