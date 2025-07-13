@@ -39,7 +39,7 @@ export default function HomeHeader() {
             <input
               type="text"
               placeholder="I'm shopping for ..."
-              className="w-full px-6 py-3 rounded-full border border-gray-200 focus:border-[#7bbf3a] outline-none text-base bg-gray-50"
+              className="w-full px-6 py-3 rounded-full border border-gray-200 focus:border-[#7bbf3a] outline-none text-base bg-gray-50 text-gray-900"
             />
           </div>
           {/* Icons */}
@@ -65,6 +65,7 @@ export default function HomeHeader() {
             <a href="#" className="hover:text-[#7bbf3a]">Elements</a>
             <a href="#" className="hover:text-[#7bbf3a]">Pages</a>
             <a href="#" className="hover:text-[#7bbf3a]">Vendors</a>
+            <a href="/about" className="hover:text-[#7bbf3a]">About Us</a>
           </div>
         </div>
       </nav>

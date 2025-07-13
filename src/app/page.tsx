@@ -123,6 +123,9 @@ export default function Home() {
       {/* Recommendations Section */}
       <Recommendations />
 
+      {/* Product Columns Section */}
+     
+
       {/* Latest Blog Section */}
       <section className="w-full max-w-[1600px] mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold text-center mb-2">Latest blog</h2>
@@ -130,7 +133,7 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {/* Blog Card 1 */}
           <div>
-            <img src="https://images.pexels.com/photos/8845420/pexels-photo-8845420.jpeg" alt="Organic vs Non Organic Food Facts" className="w-full h-56 object-cover rounded-2xl mb-4" />
+            <img src="https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg" alt="Organic vs Non Organic Food Facts" className="w-full h-56 object-cover rounded-2xl mb-4" />
             <div className="text-xs text-gray-400 tracking-widest mb-2">ORGANIC</div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Organic vs Non Organic Food Facts</h3>
             <div className="flex items-center text-xs text-gray-400 gap-2">
@@ -140,7 +143,7 @@ export default function Home() {
           </div>
           {/* Blog Card 2 */}
           <div>
-            <img src="https://img.freepik.com/free-photo/healthy-snack-box-with-crackers-olives_144627-16525.jpg" alt="Your Gateway to a Holistic Lifestyle" className="w-full h-56 object-cover rounded-2xl mb-4" />
+            <img src="https://images.pexels.com/photos/3872406/pexels-photo-3872406.jpeg" alt="Your Gateway to a Holistic Lifestyle" className="w-full h-56 object-cover rounded-2xl mb-4" />
             <div className="text-xs text-gray-400 tracking-widest mb-2">ORGANIC</div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Your Gateway to a Holistic Lifestyle</h3>
             <div className="flex items-center text-xs text-gray-400 gap-2">
@@ -150,7 +153,7 @@ export default function Home() {
           </div>
           {/* Blog Card 3 */}
           <div>
-            <img src="https://img.freepik.com/free-photo/nachos-with-avocado-beer_144627-16526.jpg" alt="Organic Food — Kickstart Your Healthy Lifestyle" className="w-full h-56 object-cover rounded-2xl mb-4" />
+            <img src="https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg" alt="Organic Food — Kickstart Your Healthy Lifestyle" className="w-full h-56 object-cover rounded-2xl mb-4" />
             <div className="text-xs text-gray-400 tracking-widest mb-2">ORGANIC</div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Organic Food — Kickstart Your Healthy Lifestyle</h3>
             <div className="flex items-center text-xs text-gray-400 gap-2">
@@ -160,7 +163,7 @@ export default function Home() {
           </div>
           {/* Blog Card 4 */}
           <div>
-            <img src="https://img.freepik.com/free-photo/green-tea-ginger-lemon_144627-16527.jpg" alt="Unfolding the Benefits of Organic Green Tea" className="w-full h-56 object-cover rounded-2xl mb-4" />
+            <img src="https://images.pexels.com/photos/4552171/pexels-photo-4552171.jpeg" alt="Unfolding the Benefits of Organic Green Tea" className="w-full h-56 object-cover rounded-2xl mb-4" />
             <div className="text-xs text-gray-400 tracking-widest mb-2">ORGANIC</div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Unfolding the Benefits of Organic Green Tea</h3>
             <div className="flex items-center text-xs text-gray-400 gap-2">
@@ -191,20 +194,20 @@ function Recommendations() {
     Featured: [
       { name: "Cherry Tomatoes", price: 9, img: "https://pngimg.com/uploads/tomato/tomato_PNG12588.png" },
       { name: "Red Onion", price: 10, img: "https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=672,height=672,format=auto/https://doordash-static.s3.amazonaws.com/media/photosV2/5922c60a-f512-40fe-acf8-37085b77e000-retina-large.jpg" },
-      { name: "Red Cabbage", price: 15, img: "https://www.freshpoint.com/wp-content/uploads/2020/02/Freshpoint-red-cabbage.jpg" },
+      { name: "Red Cabbage", price: 15, img: "https://www.veggycation.com.au/siteassets/veggycationvegetable/cabbage-red.jpg" },
       { name: "Organic Lemon", price: 20, oldPrice: 25, badge: "-20%", limited: true, img: "https://pngimg.com/uploads/lemon/lemon_PNG25204.png" },
-      { name: "Organic Almaverde", price: 18, img: "https://pngimg.com/uploads/zucchini/zucchini_PNG1.png" },
-      { name: "Orange Cauliflower", price: 10, img: "https://pngimg.com/uploads/cauliflower/cauliflower_PNG12933.png" },
+      { name: "Organic Almaverde", price: 18, img: "https://onlineorganics.ca/cdn/shop/products/organic-almaverde-puree-passata-pile_700x700.jpg?v=1748123411" },
+      { name: "Orange Cauliflower", price: 10, img: "https://www.seedway.com/app/uploads/2020/04/Clementine-1_Jan2021.png" },
       { name: "Plum Tomato", price: 11, img: "https://pngimg.com/uploads/tomato/tomato_PNG12588.png" },
       { name: "Fresh Bergamot", price: 7, img: "https://pngimg.com/uploads/lemon/lemon_PNG25204.png" },
       { name: "Chili Pepper", price: 10, img: "https://pngimg.com/uploads/chili_pepper/chili_pepper_PNG16.png" },
       { name: "Yellow Potatoes", price: 5, img: "https://pngimg.com/uploads/potato/potato_PNG10117.png" },
     ],
     Popular: [
-      { name: "Green Pepper", price: 8, img: "https://pngimg.com/uploads/pepper/pepper_PNG3212.png" },
-      { name: "Eggplant", price: 12, img: "https://pngimg.com/uploads/eggplant/eggplant_PNG13060.png" },
+      { name: "Green Pepper", price: 8, img: "https://produits.bienmanger.com/38827-0w600h600_Organic_Fresh_Green_Peppers.jpg" },
+      { name: "Eggplant", price: 12, img: "https://www.veggycation.com.au/siteassets/veggycationvegetable/eggplant.jpg" },
       { name: "Carrot", price: 6, img: "https://pngimg.com/uploads/carrot/carrot_PNG4980.png" },
-      { name: "Broccoli", price: 14, img: "https://pngimg.com/uploads/broccoli/broccoli_PNG7288.png" },
+      { name: "Broccoli", price: 14, img: "https://www.healthyfood.com/wp-content/uploads/2017/03/What_to_do_with_broccoli-1-500x375.jpg" },
     ],
     "Best Selling": [
       { name: "Cucumber", price: 7, img: "https://pngimg.com/uploads/cucumber/cucumber_PNG8546.png" },
